@@ -4,10 +4,14 @@ import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 import { ImSearch } from "react-icons/im";
 
-const SearchBar = ({ onSearchChanged }) => {
+interface SearchBarProps {
+  onSearchChanged: (newQuery: string) => void;
+}
+
+const SearchBar = ({ onSearchChanged }: SearchBarProps) => {
   const [value, setValue] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!value.trim()) {

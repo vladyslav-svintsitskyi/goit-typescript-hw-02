@@ -2,10 +2,19 @@ import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { ImCross } from "react-icons/im";
 import s from "./ImageModal.module.css";
+import { Image } from "../../types/types";
 
-const ImageModal = ({ isOpen, image, onClose }) => {
+Modal.setAppElement("#root");
+
+interface ImageModalProps {
+  isOpen: boolean;
+  image: Image;
+  onClose: () => void;
+}
+
+const ImageModal = ({ isOpen, image, onClose }: ImageModalProps) => {
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
       }
